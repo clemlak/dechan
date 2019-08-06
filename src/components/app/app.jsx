@@ -70,6 +70,22 @@ function App() {
           console.log('Replicating...');
         });
 
+        loadedDb.events.on('replicated', () => {
+          console.log('Replicated');
+
+          const result = loadedDb.iterator({ limit: -1 }).collect();
+
+          console.log(result);
+
+          const formattedChat = [];
+
+          for (let i = 0; i < result.length; i += 1) {
+            formattedChat.push(result[i].payload.value);
+          }
+
+          setChat(formattedChat);
+        });
+
         const result = loadedDb.iterator({ limit: -1 }).collect();
 
         console.log(result);
