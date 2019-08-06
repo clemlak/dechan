@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@rebass/grid": "^6.0.0",
     "ipfs": "^0.36.4",
     "orbit-db": "^0.21.4",
     "react": "^16.8.6",
