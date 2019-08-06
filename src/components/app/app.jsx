@@ -154,18 +154,31 @@ function App() {
     const hash = await db.add(msgToAdd);
     console.log(hash);
     setMsg('');
+    setLink('');
+    setPic('');
+    setTag('');
   }
 
   function displayChat() {
     const messages = [];
 
+    const options = {
+      year: '2-digit',
+      month: 'short',
+      day: 'numeric',
+      hour: '2-digit',
+      minute: '2-digit',
+    };
+
     for (let i = 0; i < chat.length; i += 1) {
+      const date = new Date(chat[i].createdAt);
+
       messages.push(
         <Card key={chat[i].createdAt}>
           <Flex>
             <Box width={1 / 2}>
               <CreatedAt>
-                {chat[i].createdAt}
+                {date.toLocaleDateString('default', options)}
               </CreatedAt>
             </Box>
             <Box width={1 / 2}>
